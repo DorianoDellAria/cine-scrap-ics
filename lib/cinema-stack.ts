@@ -35,6 +35,7 @@ export class CinemaStack extends Stack {
 					"..",
 					"src",
 					"lambda",
+					"go",
 					"calendar-generator",
 				),
 				timeout: Duration.minutes(1),
