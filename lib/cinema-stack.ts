@@ -30,13 +30,7 @@ export class CinemaStack extends Stack {
 		new Scrapper(this, "Plaza", {
 			icsBucket,
 			calendarGeneratorLambda: new GoFunction(this, "PlazaFunction", {
-				entry: path.join(
-					__dirname,
-					"..",
-					"src",
-					"lambda",
-					"plaza",
-				),
+				entry: path.join(__dirname, "..", "src", "lambda", "plaza"),
 				timeout: Duration.minutes(1),
 			}),
 			updateSchedule: aws_events.Schedule.cron({
