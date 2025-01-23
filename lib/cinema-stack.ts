@@ -9,6 +9,7 @@ import {
 	aws_events,
 	aws_s3,
 } from "aws-cdk-lib";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import type { Construct } from "constructs";
 import { Scrapper } from "./scrapper-construct";
 
@@ -36,6 +37,26 @@ export class CinemaStack extends Stack {
 			updateSchedule: aws_events.Schedule.cron({
 				hour: "6",
 				minute: "0",
+			}),
+		});
+
+		new Scrapper(this, "ImagixMons", {
+			icsBucket,
+			calendarGeneratorLambda: new NodejsFunction(this, "ImagixMonsFunction", {
+				entry: path.join(
+					__dirname,
+					"..",
+					"src",
+					"lambda",
+					"imagix",
+					"index.ts",
+				),
+				timeout: Duration.minutes(1),
+			}),
+			updateSchedule: aws_events.Schedule.cron({
+				hour: "22",
+				minute: "0",
+				weekDay: "2",
 			}),
 		});
 	}
