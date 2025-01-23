@@ -25,7 +25,7 @@ export async function createIcsFromEvents(movies: ImagixPerformance[]) {
 	await s3Client.send(
 		new PutObjectCommand({
 			Bucket: process.env.BUCKET_NAME,
-			Key: "ImagixMons.ics",
+			Key: "imagix-mons.ics",
 			Body: events,
 		}),
 	);

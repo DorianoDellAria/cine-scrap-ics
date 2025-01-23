@@ -42,14 +42,13 @@ export class CinemaStack extends Stack {
 
 		new Scrapper(this, "ImagixMons", {
 			icsBucket,
-			calendarGeneratorLambda: new NodejsFunction(this, "CalendarGenerator", {
+			calendarGeneratorLambda: new NodejsFunction(this, "ImagixMonsFunction", {
 				entry: path.join(
 					__dirname,
 					"..",
 					"src",
 					"lambda",
-					"calendar-generator",
-					"ts",
+					"imagix",
 					"index.ts",
 				),
 				timeout: Duration.minutes(1),
