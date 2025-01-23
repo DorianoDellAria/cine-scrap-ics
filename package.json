@@ -7,10 +7,13 @@
 		"check": "npx biome check . --write"
 	},
 	"devDependencies": {
+		"@aws-sdk/client-s3": "^3.733.0",
 		"@biomejs/biome": "^1.9.4",
 		"@types/node": "22.7.9",
 		"aws-cdk": "2.175.1",
+		"axios": "^1.7.9",
 		"esbuild": "^0.24.2",
+		"ics": "^3.8.1",
 		"tsx": "^4.19.2",
 		"typescript": "~5.6.3"
 	},
