@@ -29,14 +29,13 @@ export class CinemaStack extends Stack {
 
 		new Scrapper(this, "Plaza", {
 			icsBucket,
-			calendarGeneratorLambda: new GoFunction(this, "CalendarGenerator", {
+			calendarGeneratorLambda: new GoFunction(this, "PlazaFunction", {
 				entry: path.join(
 					__dirname,
 					"..",
 					"src",
 					"lambda",
-					"calendar-generator",
-					"go",
+					"plaza",
 				),
 				timeout: Duration.minutes(1),
 			}),
