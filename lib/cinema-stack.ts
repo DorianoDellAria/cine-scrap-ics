@@ -51,6 +51,7 @@ export class CinemaStack extends Stack {
 					"imagix",
 					"index.ts",
 				),
+				environment: { TZ: "Europe/Brussels" },
 				timeout: Duration.minutes(1),
 			}),
 			updateSchedule: aws_events.Schedule.cron({
