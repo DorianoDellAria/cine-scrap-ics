@@ -57,7 +57,7 @@ export class CinemaStack extends Stack {
 			updateSchedule: aws_events.Schedule.cron({
 				hour: "22",
 				minute: "0",
-				weekDay: "2",
+				weekDay: "3",
 			}),
 		});
 	}
