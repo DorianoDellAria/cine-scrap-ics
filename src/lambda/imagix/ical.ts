@@ -17,6 +17,7 @@ export async function createIcsFromEvents(movies: ImagixPerformance[]) {
 				],
 				duration: { minutes: performance.duration },
 				description: `${performance.ticket_url}\n${performance.synopsis}`,
+				location: performance.location,
 			};
 		}),
 	);
