@@ -90,6 +90,7 @@ func generateCalendar(movies *[]movie.Movie) string {
 		event.SetSummary(m.Title)
 		event.SetStartAt(m.DayWithTime)
 		event.SetDuration(m.Duration)
+		event.SetLocation("Plaza Arthouse Cinema, Rue de Nimy 12, 7000 Mons, Belgique")
 		event.SetDescription(fmt.Sprintf("Version: %s\nProducer: %s\nDuration: %s\nYear: %s\nCountry: %s", m.Version, m.Producer, m.Duration, m.Year, m.Country))
 	}
 	return cal.Serialize()

@@ -105,7 +105,12 @@ export interface ImagixPerformance {
 	synopsis: string;
 	date: Date;
 	duration: number;
+	location: string;
 	version: string;
+}
+
+enum CENTERS {
+	Mons = "Imagix Mons, Bd André Delvaux 1, 7000 Mons, Belgique",
 }
 
 export async function getImagixEvents(): Promise<ImagixPerformance[]> {
@@ -118,8 +123,10 @@ export async function getImagixEvents(): Promise<ImagixPerformance[]> {
 	const movies = response.data.movies;
 	const performances = response.data.performances;
 
+	const centerKey = "Mons";
+
 	return performances
-		.filter((performance) => performance.center.title === "Mons")
+		.filter((performance) => performance.center.title === centerKey)
 		.map((performance) => {
 			const movieKey = Object.keys(movies).find((key) => {
 				return movies[key].maccsbox_id === performance.film_edi;
@@ -132,7 +139,8 @@ export async function getImagixEvents(): Promise<ImagixPerformance[]> {
 				title: performance.title,
 				synopsis: movie.synopsis_fr,
 				date: new Date(`${performance.date}T${performance.time}:00`),
-				duration: movie.duration,
+				duration: movie.duration + 30,
+				location: CENTERS[centerKey],
 				version: performance.language,
 			};
 		});
